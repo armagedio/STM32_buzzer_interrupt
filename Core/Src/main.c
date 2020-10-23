@@ -62,7 +62,14 @@ static void MX_SPI1_Init(void);
 void MX_USB_HOST_Process(void);
 
 /* USER CODE BEGIN PFP */
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin){
+	if(GPIO_Pin == GPIO_PIN_0)
+		{
+		void bzz();
+		}
 
+
+}
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -74,6 +81,8 @@ void MX_USB_HOST_Process(void);
   * @brief  The application entry point.
   * @retval int
   */
+void bzz();
+
 int main(void)
 {
   /* USER CODE BEGIN 1 */
@@ -109,15 +118,16 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+
   while (1)
   {
 
 
 	  //HAL_GPIO_TogglePin(GPIOD,GPIO_PIN_12);
-	  HAL_GPIO_WritePin(GPIOD,GPIO_PIN_11,SET);
-	  HAL_Delay(1000);
+	 /* HAL_GPIO_WritePin(GPIOD,GPIO_PIN_11,SET);
+	  HAL_Delay(100);
 	  HAL_GPIO_WritePin(GPIOD,GPIO_PIN_11,RESET);
-	  HAL_Delay(1000);
+	  HAL_Delay(100);*/
 
     /* USER CODE END WHILE */
     MX_USB_HOST_Process();
@@ -131,6 +141,15 @@ int main(void)
   * @brief System Clock Configuration
   * @retval None
   */
+void bzz()
+{
+	  	 HAL_GPIO_WritePin(GPIOD,GPIO_PIN_11,SET);
+		  HAL_Delay(100);
+		  HAL_GPIO_WritePin(GPIOD,GPIO_PIN_11,RESET);
+		  HAL_Delay(100);
+
+}
+
 void SystemClock_Config(void)
 {
   RCC_OscInitTypeDef RCC_OscInitStruct = {0};
@@ -217,6 +236,7 @@ static void MX_I2C1_Init(void)
   * @param None
   * @retval None
   */
+
 static void MX_I2S2_Init(void)
 {
 
