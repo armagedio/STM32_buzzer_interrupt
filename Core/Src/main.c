@@ -63,8 +63,10 @@ void MX_USB_HOST_Process(void);
 
 /* USER CODE BEGIN PFP */
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin){
-	if(GPIO_Pin == GPIO_PIN_0)
+	if(GPIO_Pin == HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_0))
 		{
+		HAL_GPIO_WritePin(GPIOD,GPIO_PIN_15,SET);
+		//HAL_GPIO_WritePin(LED_Blue_GPIO_Port, LED_Blue_Pin, HAL_GPIO_ReadPin(Button_GPIO_Port, Button_Pin))
 		void bzz();
 		}
 
@@ -74,14 +76,14 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin){
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
+void bzz();
 /* USER CODE END 0 */
 
 /**
   * @brief  The application entry point.
   * @retval int
   */
-void bzz();
+
 
 int main(void)
 {
@@ -144,9 +146,9 @@ int main(void)
 void bzz()
 {
 	  	 HAL_GPIO_WritePin(GPIOD,GPIO_PIN_11,SET);
-		  HAL_Delay(100);
-		  HAL_GPIO_WritePin(GPIOD,GPIO_PIN_11,RESET);
-		  HAL_Delay(100);
+		 HAL_Delay(100);
+		 HAL_GPIO_WritePin(GPIOD,GPIO_PIN_11,RESET);
+		 HAL_Delay(100);
 
 }
 
