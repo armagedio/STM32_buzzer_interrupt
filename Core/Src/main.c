@@ -64,10 +64,13 @@ void MX_USB_HOST_Process(void);
 /* USER CODE BEGIN PFP */
 void bzz();
 
-void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin_0){
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin){
+	if(GPIO_Pin==Blue_Button_Pin)
+	{
+		HAL_GPIO_WritePin(GPIOD,GPIO_PIN_15,SET); //Blue LED
+		bzz();
+	}
 
-	HAL_GPIO_WritePin(GPIOD,GPIO_PIN_15,SET); //Blue LED
-	bzz();
 }
 /* USER CODE END PFP */
 
